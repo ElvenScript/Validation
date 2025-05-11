@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Validation.Fluent/Validation.Fluent.csproj" />
+    <Project Path="src/Validation/Validation.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Validation.Tests/Validation.Tests.csproj" />
+  </Folder>
+</Solution>
