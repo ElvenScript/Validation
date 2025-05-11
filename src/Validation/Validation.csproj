@@ -1,6 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <PackageId>ElvenScript.Validation</PackageId>
+        <Version>0.0.1</Version>
+        <Authors>Lukáš Drábek</Authors>
+        <Description></Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/ElvenScript/Validation</RepositoryUrl>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
