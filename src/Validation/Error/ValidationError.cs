@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-namespace Mannaz.Error;
+namespace ElvenScript.Error;
 
 public record ValidationError() : IEnumerable<BaseError>
 {

@@ -17,7 +17,7 @@
       <ProjectReference Include="..\Validation\Validation.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="ElvenScript.Error" Version="0.0.1" />
-        <PackageReference Include="ElvenScript.Result" Version="0.0.1" />
+        <PackageReference Include="ElvenScript.Error" Version="0.0.2-beta" />
+        <PackageReference Include="ElvenScript.Result" Version="0.0.2-beta" />
     </ItemGroup>
 </Project>

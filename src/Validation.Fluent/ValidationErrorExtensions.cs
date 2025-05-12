@@ -1,8 +1,8 @@
 ﻿
 
-using Mannaz.Error;
+using ElvenScript.Error;
 
-namespace Mannaz.Validation.Fluent;
+namespace ElvenScript.Validation.Fluent;
 
 public static partial class ValidationErrorExtensions
 {

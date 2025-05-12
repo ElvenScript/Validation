@@ -1,7 +1,7 @@
-using Mannaz.Error;
-using Mannaz.Result;
+using ElvenScript.Error;
+using ElvenScript.Result;
 
-namespace Mannaz.Validation.Tests;
+namespace ElvenScript.Validation.Tests;
 
 public class ValidationResultTests
 {

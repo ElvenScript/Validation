@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 
-using Mannaz.Result;
+using ElvenScript.Result;
 
-namespace Mannaz.Validation.Fluent;
+namespace ElvenScript.Validation.Fluent;
 
 public static partial class ValidationResultExtensions
 {

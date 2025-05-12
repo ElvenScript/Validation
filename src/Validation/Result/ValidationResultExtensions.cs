@@ -1,7 +1,7 @@
-﻿using Mannaz.Error;
-using Mannaz.Result;
+﻿using ElvenScript.Error;
+using ElvenScript.Result;
 
-namespace Mannaz.Result;
+namespace ElvenScript.Result;
 
 public static partial class ValidationResultExtensions
 {

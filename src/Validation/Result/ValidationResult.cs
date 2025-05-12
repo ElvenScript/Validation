@@ -1,8 +1,8 @@
-﻿using Mannaz.Error;
+﻿using ElvenScript.Error;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Mannaz.Result;
+namespace ElvenScript.Result;
 
 public record ValidationResult<T> : IApiResult<T, ValidationError>
 {
