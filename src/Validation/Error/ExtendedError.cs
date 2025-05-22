@@ -2,7 +2,7 @@
 namespace ElvenScript.Error;
 
 public record ExtendedError(string Code, string Description, string FieldName, ErrorSeverity Severity = ErrorSeverity.Error)
-    : Error(Code, Description, Severity)
+    : Error(Code, Severity, Description)
 {
     public override ProblemDetails ToProblemDetails()
     {

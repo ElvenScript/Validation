@@ -24,7 +24,7 @@ public class ValidationResultTests
     public void Failure_ShouldCreateFailedResult()
     {
         // Arrange
-        var error = new ValidationError(new Error.Error("ERR001", "Test error"));
+        var error = new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "Test error"));
 
         // Act
         var result = ValidationResult<string>.Failure(error, State.Error);
@@ -39,7 +39,7 @@ public class ValidationResultTests
     public void Value_ShouldThrowException_WhenResultIsFailure()
     {
         // Arrange
-        var result = ValidationResult<string>.Failure(new ValidationError(new Error.Error("ERR001", "Test error")));
+        var result = ValidationResult<string>.Failure(new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "Test error")));
 
         // Act & Assert
         Assert.Throws<InvalidOperationException>(() => _ = result.Value);
@@ -72,8 +72,8 @@ public class ValidationResultTests
     public void And_ShouldCombineErrorsFromFailedResults()
     {
         // Arrange
-        var error1 = new ValidationError(new Error.Error("ERR001", "First error"));
-        var error2 = new ValidationError(new Error.Error("ERR002", "Second error"));
+        var error1 = new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "First error"));
+        var error2 = new ValidationError(new Error.Error("ERR002", ErrorSeverity.Error, "Second error"));
         var result1 = ValidationResult<string>.Failure(error1);
         var result2 = ValidationResult<string>.Failure(error2);
 
@@ -91,7 +91,7 @@ public class ValidationResultTests
     public void ToProblemDetails_ShouldReturnCorrectProblemDetails()
     {
         // Arrange
-        var result = ValidationResult<string>.Failure(new ValidationError(new Error.Error("ERR001", "Test error")), State.Invalid);
+        var result = ValidationResult<string>.Failure(new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "Test error")), State.Invalid);
 
         // Act
         var problemDetails = result.ToProblemDetails();
