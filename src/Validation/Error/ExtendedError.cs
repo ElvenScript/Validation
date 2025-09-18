@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-namespace ElvenScript.Error;
+namespace Lukdrasil.Error;
 
 public record ExtendedError(string Code, string Description, string FieldName, ErrorSeverity Severity = ErrorSeverity.Error)
     : Error(Code, Severity, Description)

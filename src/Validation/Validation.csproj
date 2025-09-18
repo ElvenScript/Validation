@@ -1,16 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <PackageId>ElvenScript.Validation</PackageId>
-        <Version>0.0.4-beta</Version>
+        <PackageId>Lukdrasil.Validation</PackageId>
+        <Version>1.0.0</Version>
         <Authors>Lukáš Drábek</Authors>
         <Description></Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/ElvenScript/Validation</RepositoryUrl>
+        <RepositoryUrl>https://github.com/Lukdrasil/Validation</RepositoryUrl>
     </PropertyGroup>
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ElvenScript.Error" Version="0.0.4-beta" />
-        <PackageReference Include="ElvenScript.Result" Version="0.0.2-beta" />
+        <PackageReference Include="Lukdrasil.Error" Version="1.0.0" />
+        <PackageReference Include="Lukdrasil.Result" Version="1.0.0" />
     </ItemGroup>
 </Project>

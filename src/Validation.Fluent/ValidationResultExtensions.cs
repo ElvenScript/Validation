@@ -1,18 +1,21 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 
-using ElvenScript.Result;
+using Lukdrasil.Result;
 
-namespace ElvenScript.Validation.Fluent;
+using Validation.Error;
+
+namespace Validation.Fluent;
 
 public static partial class ValidationResultExtensions
 {
     public static ValidationResult<T> Validate<T, TValidator>(this ValidationResult<T> result) where TValidator : AbstractValidator<T>
     {
-        var validator = Activator.CreateInstance<TValidator>();
-        var validationResult = validator.Validate(result.Value);
+        TValidator validator = Activator.CreateInstance<TValidator>();
+        ValidationResult validationResult = validator.Validate(result.Value);
         if (!validationResult.IsValid)
         {
-            var error = validationResult.Errors.ToValidationError();
+            ValidationError error = validationResult.Errors.ToValidationError();
             return ValidationResult<T>.Failure(error);
         }
         return result;

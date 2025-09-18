@@ -1,7 +1,11 @@
-using ElvenScript.Error;
-using ElvenScript.Result;
+using Lukdrasil.Error;
+using Lukdrasil.Result;
 
-namespace ElvenScript.Validation.Tests;
+using Microsoft.AspNetCore.Mvc;
+
+using Validation.Error;
+
+namespace Validation.Tests;
 
 public class ValidationResultTests
 {
@@ -9,10 +13,10 @@ public class ValidationResultTests
     public void Success_ShouldCreateSuccessfulResult()
     {
         // Arrange
-        var value = "TestValue";
+        string value = "TestValue";
 
         // Act
-        var result = ValidationResult<string>.Success(value, State.Ok);
+        ValidationResult<string> result = ValidationResult<string>.Success(value, State.Ok);
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -24,10 +28,10 @@ public class ValidationResultTests
     public void Failure_ShouldCreateFailedResult()
     {
         // Arrange
-        var error = new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "Test error"));
+        ValidationError error = new ValidationError(new Lukdrasil.Error.Error("ERR001", ErrorSeverity.Error, "Test error"));
 
         // Act
-        var result = ValidationResult<string>.Failure(error, State.Error);
+        ValidationResult<string> result = ValidationResult<string>.Failure(error, State.Error);
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -39,7 +43,7 @@ public class ValidationResultTests
     public void Value_ShouldThrowException_WhenResultIsFailure()
     {
         // Arrange
-        var result = ValidationResult<string>.Failure(new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "Test error")));
+        ValidationResult<string> result = ValidationResult<string>.Failure(new ValidationError(new Lukdrasil.Error.Error("ERR001", ErrorSeverity.Error, "Test error")));
 
         // Act & Assert
         Assert.Throws<InvalidOperationException>(() => _ = result.Value);
@@ -49,7 +53,7 @@ public class ValidationResultTests
     public void Error_ShouldThrowException_WhenResultIsSuccess()
     {
         // Arrange
-        var result = ValidationResult<string>.Success("TestValue");
+        ValidationResult<string> result = ValidationResult<string>.Success("TestValue");
 
         // Act & Assert
         Assert.Throws<InvalidOperationException>(() => _ = result.Error);
@@ -59,10 +63,10 @@ public class ValidationResultTests
     public void WithState_ShouldUpdateStateCorrectly()
     {
         // Arrange
-        var result = ValidationResult<string>.Success("TestValue");
+        ValidationResult<string> result = ValidationResult<string>.Success("TestValue");
 
         // Act
-        var updatedResult = result.WithState(State.Created);
+        ValidationResult<string> updatedResult = result.WithState(State.Created);
 
         // Assert
         Assert.Equal(State.Created, updatedResult.State);
@@ -72,13 +76,13 @@ public class ValidationResultTests
     public void And_ShouldCombineErrorsFromFailedResults()
     {
         // Arrange
-        var error1 = new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "First error"));
-        var error2 = new ValidationError(new Error.Error("ERR002", ErrorSeverity.Error, "Second error"));
-        var result1 = ValidationResult<string>.Failure(error1);
-        var result2 = ValidationResult<string>.Failure(error2);
+        ValidationError error1 = new ValidationError(new Lukdrasil.Error.Error("ERR001", ErrorSeverity.Error, "First error"));
+        ValidationError error2 = new ValidationError(new Lukdrasil.Error.Error("ERR002", ErrorSeverity.Error, "Second error"));
+        ValidationResult<string> result1 = ValidationResult<string>.Failure(error1);
+        ValidationResult<string> result2 = ValidationResult<string>.Failure(error2);
 
         // Act
-        var combinedResult = result1.And(result2);
+        ValidationResult<string> combinedResult = result1.And(result2);
 
         // Assert
         Assert.False(combinedResult.IsSuccess);
@@ -91,10 +95,10 @@ public class ValidationResultTests
     public void ToProblemDetails_ShouldReturnCorrectProblemDetails()
     {
         // Arrange
-        var result = ValidationResult<string>.Failure(new ValidationError(new Error.Error("ERR001", ErrorSeverity.Error, "Test error")), State.Invalid);
+        ValidationResult<string> result = ValidationResult<string>.Failure(new ValidationError(new Lukdrasil.Error.Error("ERR001", ErrorSeverity.Error, "Test error")), State.Invalid);
 
         // Act
-        var problemDetails = result.ToProblemDetails();
+        ProblemDetails problemDetails = result.ToProblemDetails();
 
         // Assert
         Assert.NotNull(problemDetails);

@@ -1,8 +1,8 @@
-﻿using ElvenScript.Error;
+﻿using Microsoft.AspNetCore.Mvc;
 
-using Microsoft.AspNetCore.Mvc;
+using Validation.Error;
 
-namespace ElvenScript.Result;
+namespace Lukdrasil.Result;
 
 public record ValidationResult<T> : IApiResult<T, ValidationError>
 {

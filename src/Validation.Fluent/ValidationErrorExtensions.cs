@@ -1,14 +1,16 @@
-﻿
+﻿using FluentValidation.Results;
 
-using ElvenScript.Error;
+using Lukdrasil.Error;
 
-namespace ElvenScript.Validation.Fluent;
+using Validation.Error;
+
+namespace Validation.Fluent;
 
 public static partial class ValidationErrorExtensions
 {
     public static ValidationError ToValidationError(this FluentValidation.Results.ValidationFailure validationFailure)
     {
-        var error = new Error.Error(validationFailure.ErrorCode, validationFailure.Severity switch
+        Lukdrasil.Error.Error error = new Lukdrasil.Error.Error(validationFailure.ErrorCode, validationFailure.Severity switch
         {
             FluentValidation.Severity.Warning => ErrorSeverity.Warning,
             FluentValidation.Severity.Info => ErrorSeverity.Info,
@@ -19,10 +21,10 @@ public static partial class ValidationErrorExtensions
     }
     public static ValidationError ToValidationError(this List<FluentValidation.Results.ValidationFailure> validationFailures)
     {
-        var error = new ValidationError();
-        foreach (var validationFailure in validationFailures)
+        ValidationError error = [];
+        foreach (ValidationFailure validationFailure in validationFailures)
         {
-            error.Add(validationFailure.ToValidationError());
+            error = error.Add(validationFailure.ToValidationError());
         }
         return error;
     }

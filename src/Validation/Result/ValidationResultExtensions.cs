@@ -1,7 +1,8 @@
-﻿using ElvenScript.Error;
-using ElvenScript.Result;
+﻿using Lukdrasil.Result;
 
-namespace ElvenScript.Result;
+using Validation.Error;
+
+namespace Lukdrasil.Result;
 
 public static partial class ValidationResultExtensions
 {

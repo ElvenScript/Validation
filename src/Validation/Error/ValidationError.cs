@@ -1,5 +1,7 @@
-﻿using System.Collections;
-namespace ElvenScript.Error;
+﻿using Lukdrasil.Error;
+
+using System.Collections;
+namespace Validation.Error;
 
 public record ValidationError() : IEnumerable<BaseError>
 {
@@ -14,8 +16,15 @@ public record ValidationError() : IEnumerable<BaseError>
         Errors = errors?.ToHashSet() ?? [];
     }
 
-    public ValidationError Add(BaseError error) => this with { Errors = [.. Errors, error] };
-    public ValidationError Add(ValidationError error) => this with { Errors = [.. Errors, .. error] };
+    public ValidationError Add(BaseError error)
+    {
+        return this with { Errors = [.. Errors, error] };
+    }
+
+    public ValidationError Add(ValidationError error)
+    {
+        return this with { Errors = [.. Errors, .. error] };
+    }
 
     public IEnumerator<BaseError> GetEnumerator()
     {
